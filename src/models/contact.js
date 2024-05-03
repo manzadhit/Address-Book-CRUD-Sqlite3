@@ -26,4 +26,34 @@ const createContact = (name, phoneNumber, company, email) => {
   });
 };
 
-module.exports = { createContact };
+const updateContact = (id, name, phoneNumber, company, email) => {
+  return new Promise((resolve, reject) => {
+    db.run(
+      `
+    UPDATE Contacts
+    SET name = ?, phoneNumber = ?, company = ?, email = ?
+    WHERE id = ?
+    `,
+      [name, phoneNumber, company, email, id],
+      (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          db.get(
+            "SELECT * FROM Contacts WHERE id = ?",
+            [id],
+            (err, data) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data);
+              }
+            }
+          );
+        }
+      }
+    );
+  });
+};
+
+module.exports = { createContact, updateContact };
