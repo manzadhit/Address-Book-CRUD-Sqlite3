@@ -17,9 +17,14 @@ const updateContactView = (contact) => {
   console.log(`Email : ${contact.email}`);
 };
 
+const deleteContactView = () => {
+  console.log("Successfully delete contact");
+}
+
 const contactErrorView = (error) => {
   console.log("An error occurred while processing the request : \n", error.message);
 }
+
 
 const help = () => {
   console.log(`
@@ -41,4 +46,10 @@ ADDRESS BOOK COMMAND
   `);
 }
 
-module.exports = { createContactView, contactErrorView, updateContactView, help };
+module.exports = {
+  createContactView,
+  contactErrorView,
+  updateContactView,
+  deleteContactView,
+  help,
+};

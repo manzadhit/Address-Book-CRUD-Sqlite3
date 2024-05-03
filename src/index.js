@@ -1,6 +1,6 @@
 const command = process.argv[2];
 const argument = process.argv.slice(3);
-const { createContactController, helpCommand, updateContactController } = require("./controllers/contactController");
+const { createContactController, helpCommand, updateContactController, deleteContactController } = require("./controllers/contactController");
 
 
 /*
@@ -29,6 +29,9 @@ switch(command) {
     break;
   case "updateContact":
     updateContactController(argument[0], argument[1], argument[2], argument[3], argument[4]);
+    break;
+  case "deleteContact":
+    deleteContactController(argument[0]);
     break;
   default:
     helpCommand()

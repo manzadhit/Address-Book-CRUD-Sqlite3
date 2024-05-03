@@ -39,21 +39,29 @@ const updateContact = (id, name, phoneNumber, company, email) => {
         if (err) {
           reject(err);
         } else {
-          db.get(
-            "SELECT * FROM Contacts WHERE id = ?",
-            [id],
-            (err, data) => {
-              if (err) {
-                reject(err);
-              } else {
-                resolve(data);
-              }
+          db.get("SELECT * FROM Contacts WHERE id = ?", [id], (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
             }
-          );
+          });
         }
       }
     );
   });
 };
 
-module.exports = { createContact, updateContact };
+const deleteContact = (id) => {
+  return new Promise((resolve, reject) => {
+    db.run("DELETE FROM Contacts WHERE id = ?", [id], (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+};
+
+module.exports = { createContact, updateContact, deleteContact };

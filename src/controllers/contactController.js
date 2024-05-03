@@ -1,5 +1,5 @@
-const { createContact, updateContact } = require("../models/contact");
-const { createContactView, updateContactView, contactErrorView, help } = require("../views/contactView");
+const { createContact, updateContact, deleteContact } = require("../models/contact");
+const { createContactView, updateContactView, deleteContactView, contactErrorView, help } = require("../views/contactView");
 
 const createContactController = async(name, phoneNumber, company, email) => {
   try {
@@ -19,8 +19,23 @@ const updateContactController = async(id, name, phoneNumber, company, email) => 
   }
 }
 
+const deleteContactController = async (id) => {
+  try {
+    await deleteContact(id);
+    deleteContactView();
+  } catch (error) {
+    contactErrorView(error);
+  }
+}
+
+
 const helpCommand = () => {
   help()
 }
 
-module.exports = { createContactController, updateContactController, helpCommand };
+module.exports = {
+  createContactController,
+  updateContactController,
+  deleteContactController,
+  helpCommand,
+};
