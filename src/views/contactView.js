@@ -21,6 +21,10 @@ const deleteContactView = () => {
   console.log("Successfully delete contact");
 }
 
+const showContactView = (allContact) => {
+  console.table(allContact);
+}
+
 const contactErrorView = (error) => {
   console.log("An error occurred while processing the request : \n", error.message);
 }
@@ -51,5 +55,6 @@ module.exports = {
   contactErrorView,
   updateContactView,
   deleteContactView,
+  showContactView,
   help,
 };

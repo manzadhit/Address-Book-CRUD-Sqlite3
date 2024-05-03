@@ -1,5 +1,12 @@
-const { createContact, updateContact, deleteContact } = require("../models/contact");
-const { createContactView, updateContactView, deleteContactView, contactErrorView, help } = require("../views/contactView");
+const { createContact, updateContact, deleteContact, showContact } = require("../models/contact");
+const {
+  createContactView,
+  updateContactView,
+  deleteContactView,
+  contactErrorView,
+  showContactView,
+  help,
+} = require("../views/contactView");
 
 const createContactController = async(name, phoneNumber, company, email) => {
   try {
@@ -28,6 +35,15 @@ const deleteContactController = async (id) => {
   }
 }
 
+const showContactController = async() => {
+  try {
+    const allContact = await showContact();
+    showContactView(allContact);
+  } catch (error) {
+    contactErrorView(error);
+  }
+}
+
 
 const helpCommand = () => {
   help()
@@ -37,5 +53,6 @@ module.exports = {
   createContactController,
   updateContactController,
   deleteContactController,
+  showContactController,
   helpCommand,
 };
