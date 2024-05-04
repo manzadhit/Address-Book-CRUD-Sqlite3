@@ -58,4 +58,24 @@ const updateContactGroups = (id, contactId, groupId) => {
   });
 };
 
-module.exports = { createContactGroup, updateContactGroups };
+const deleteContactGroup = (id) => {
+  return new Promise((resolve, reject) => {
+    db.get("SELECT * FROM GroupContact WHERE id = ?", [id], (err, data) => {
+      if (err) {
+        reject(err);
+      } else if (!data) {
+        reject(new Error(`ContactGroups with id ${id} not found`));
+      } else {
+        db.run("DELETE FROM GroupContact WHERE id = ?", [id], (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        });
+      }
+    });
+  });
+};
+
+module.exports = { createContactGroup, updateContactGroups, deleteContactGroup };

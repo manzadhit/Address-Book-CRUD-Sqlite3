@@ -1,5 +1,5 @@
-const { createContactGroup, updateContactGroups } = require("../models/contactGroups");
-const { contactGroupErrorView, updateContactGroupView, createContactGroupView } = require("../views/contactGroupView")
+const { createContactGroup, updateContactGroups, deleteContactGroup } = require("../models/contactGroups");
+const { contactGroupErrorView, updateContactGroupView, createContactGroupView, deleteContactGroupView } = require("../views/contactGroupView")
 
 
 const createContactGroupController = async (contactId, groupId) => {
@@ -20,4 +20,17 @@ const updateContactGroupController = async (id, contactId, groupId) => {
   }
 }
 
-module.exports = {createContactGroupController, updateContactGroupController};
+const deleteContactGroupController = async (id) => {
+  try {
+    await deleteContactGroup(id);
+    deleteContactGroupView();
+  } catch (error) {
+    contactGroupErrorView(error);
+  }
+};
+
+module.exports = {
+  createContactGroupController,
+  updateContactGroupController,
+  deleteContactGroupController,
+};

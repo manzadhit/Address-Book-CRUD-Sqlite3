@@ -10,6 +10,7 @@ const {
 const {
   createContactGroupController,
   updateContactGroupController,
+  deleteContactGroupController,
 } = require("./controllers/contactGroupController");
 const {
   createGroupController,
@@ -74,6 +75,9 @@ switch (command) {
     break;
   case "updateContactGroups":
     updateContactGroupController(argument[0], argument[1], argument[2]);
+    break;
+  case "deleteContactGroups":
+    deleteContactGroupController(argument[0]);
     break;
   default:
     helpCommand();

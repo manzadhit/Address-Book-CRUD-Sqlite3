@@ -21,8 +21,13 @@ const contactGroupErrorView = (error) => {
   );
 };
 
+const deleteContactGroupView = () => {
+  console.log("Successfully delete Contact Group");
+};
+
 module.exports = {
   createContactGroupView,
   contactGroupErrorView,
-  updateContactGroupView
+  updateContactGroupView,
+  deleteContactGroupView,
 };
