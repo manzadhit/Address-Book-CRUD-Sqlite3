@@ -42,6 +42,8 @@ const updateContact = (id, name, phoneNumber, company, email) => {
           db.get("SELECT * FROM Contacts WHERE id = ?", [id], (err, data) => {
             if (err) {
               reject(err);
+            } else if (!data) {
+              reject(new Error(`Contact with id ${id} not found`));
             } else {
               resolve(data);
             }
@@ -57,6 +59,8 @@ const deleteContact = (id) => {
     db.run("DELETE FROM Contacts WHERE id = ?", [id], (err) => {
       if (err) {
         reject(err);
+      } else if (!data) {
+        reject(new Error(`Contact with id ${id} not found`));
       } else {
         resolve();
       }
