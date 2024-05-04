@@ -26,4 +26,36 @@ const createContactGroup = (contactId, groupId) => {
   });
 };
 
-module.exports = { createContactGroup };
+const updateContactGroups = (id, contactId, groupId) => {
+  return new Promise((resolve, reject) => {
+    db.run(
+      `
+        UPDATE GroupContact
+        SET contactId = ?, groupId = ?
+        WHERE id = ?
+        `,
+      [contactId, groupId, id],
+      (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          db.get(
+            "SELECT * FROM GroupContact WHERE id = ?",
+            [id],
+            (err, data) => {
+              if (err) {
+                reject(err);
+              } else if (!data) {
+                reject(new Error(`GroupContact with id ${id} not found`));
+              } else {
+                resolve(data);
+              }
+            }
+          );
+        }
+      }
+    );
+  });
+};
+
+module.exports = { createContactGroup, updateContactGroups };

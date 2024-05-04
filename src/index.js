@@ -1,9 +1,22 @@
 const command = process.argv[2];
 const argument = process.argv.slice(3);
-const { createContactController, helpCommand, updateContactController, deleteContactController, showContactController } = require("./controllers/contactController");
-const { createContactGroupController } = require("./controllers/contactGroupController");
-const { createGroupController, updateGroupController, deleteGroupController, showGroupsController } = require("./controllers/groupsController");
-
+const {
+  createContactController,
+  helpCommand,
+  updateContactController,
+  deleteContactController,
+  showContactController,
+} = require("./controllers/contactController");
+const {
+  createContactGroupController,
+  updateContactGroupController,
+} = require("./controllers/contactGroupController");
+const {
+  createGroupController,
+  updateGroupController,
+  deleteGroupController,
+  showGroupsController,
+} = require("./controllers/groupsController");
 
 /*
 ====================
@@ -25,12 +38,18 @@ ADDRESS BOOK COMMAND
 
 */
 
-switch(command) {
+switch (command) {
   case "createContact":
     createContactController(argument[0], argument[1], argument[2], argument[3]);
     break;
   case "updateContact":
-    updateContactController(argument[0], argument[1], argument[2], argument[3], argument[4]);
+    updateContactController(
+      argument[0],
+      argument[1],
+      argument[2],
+      argument[3],
+      argument[4]
+    );
     break;
   case "deleteContact":
     deleteContactController(argument[0]);
@@ -53,7 +72,10 @@ switch(command) {
   case "createContactGroups":
     createContactGroupController(argument[0], argument[1]);
     break;
+  case "updateContactGroups":
+    updateContactGroupController(argument[0], argument[1], argument[2]);
+    break;
   default:
-    helpCommand()
+    helpCommand();
     break;
 }
