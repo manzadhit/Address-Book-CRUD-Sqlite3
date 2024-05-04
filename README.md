@@ -41,27 +41,30 @@ Untuk menggunakan aplikasi ini, jalankan perintah `node src/index.js` di termina
 Untuk contoh penggunaan atau skenario lebih lanjut, jalankan perintah `node src/index.js` dan ikuti petunjuk yang diberikan.
 
 ## Struktur Proyek
+
+```
 address-book-CRUD-sqlite3/
 ├── src/
-│   ├── connection/
-│   │   └── connection.js
-│   ├── controllers/
-│   │   ├── contactController.js
-│   │   ├── contactGroupController.js
-│   │   └── groupController.js
-│   ├── models/
-│   │   ├── Contact.js
-│   │   ├── Group.js
-│   │   └── ContactGroup.js
-│   ├── views/
-│   │   ├── contactViews.js
-│   │   ├── contactGroupViews.js
-│   │   └── groupViews.js
-│   ├── schema/
-│   │   └── schema.js
-│   └── index.js
+│ ├── connection/
+│ │ └── connection.js
+│ ├── controllers/
+│ │ ├── contactController.js
+│ │ ├── contactGroupController.js
+│ │ └── groupController.js
+│ ├── models/
+│ │ ├── Contact.js
+│ │ ├── Group.js
+│ │ └── ContactGroup.js
+│ ├── views/
+│ │ ├── contactViews.js
+│ │ ├── contactGroupViews.js
+│ │ └── groupViews.js
+│ ├── schema/
+│ │ └── schema.js
+│ └── index.js
 ├── address_book.db
 └── README.md
+```
 
 Proyek ini menggunakan konsep MVC (Model-View-Controller) dan memiliki struktur direktori sebagai berikut:
 
