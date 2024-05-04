@@ -11,6 +11,10 @@ const updateGroupView = (groupUpdated) => {
   console.log(`GroupName : ${groupUpdated.groupName}`);
 };
 
+const deleteGroupView = () => {
+  console.log("Successfully delete group");
+}
+
 
 const groupsErrorView = (error) => {
     console.log(
@@ -23,4 +27,5 @@ module.exports = {
   createGroupView,
   groupsErrorView,
   updateGroupView,
+  deleteGroupView
 };

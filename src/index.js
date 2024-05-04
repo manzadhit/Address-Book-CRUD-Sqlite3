@@ -1,7 +1,7 @@
 const command = process.argv[2];
 const argument = process.argv.slice(3);
 const { createContactController, helpCommand, updateContactController, deleteContactController, showContactController } = require("./controllers/contactController");
-const { createGroupController, updateGroupsController } = require("./controllers/groupsController");
+const { createGroupController, updateGroupController, deleteGroupController } = require("./controllers/groupsController");
 
 
 /*
@@ -41,7 +41,10 @@ switch(command) {
     createGroupController(argument[0]);
     break;
   case "updateGroups":
-    updateGroupsController(argument[0], argument[1]);
+    updateGroupController(argument[0], argument[1]);
+    break;
+  case "deleteGroups":
+    deleteGroupController(argument[0]);
     break;
   default:
     helpCommand()
