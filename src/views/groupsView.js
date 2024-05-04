@@ -15,6 +15,10 @@ const deleteGroupView = () => {
   console.log("Successfully delete group");
 }
 
+const showGroupsView = (groups) => {
+  console.table(groups);
+}
+
 
 const groupsErrorView = (error) => {
     console.log(
@@ -27,5 +31,6 @@ module.exports = {
   createGroupView,
   groupsErrorView,
   updateGroupView,
-  deleteGroupView
+  deleteGroupView,
+  showGroupsView
 };

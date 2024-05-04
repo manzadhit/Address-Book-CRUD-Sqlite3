@@ -1,5 +1,16 @@
-const { createGroup, updateGroup, deleteGroup } = require("../models/groups");
-const { createGroupView, groupsErrorView, updateGroupView, deleteGroupView } = require("../views/groupsView");
+const {
+  createGroup,
+  updateGroup,
+  deleteGroup,
+  showGroups,
+} = require("../models/groups");
+const {
+  createGroupView,
+  groupsErrorView,
+  updateGroupView,
+  deleteGroupView,
+  showGroupsView,
+} = require("../views/groupsView");
 
 const createGroupController = async (groupName) => {
   try {
@@ -8,7 +19,7 @@ const createGroupController = async (groupName) => {
   } catch (error) {
     groupsErrorView(error);
   }
-}
+};
 
 const updateGroupController = async (id, groupName) => {
   try {
@@ -17,19 +28,29 @@ const updateGroupController = async (id, groupName) => {
   } catch (error) {
     groupsErrorView(error);
   }
-}
+};
 
 const deleteGroupController = async (id) => {
   try {
     await deleteGroup(id);
-    deleteGroupView()
+    deleteGroupView();
   } catch (error) {
     groupsErrorView(error);
   }
-}
+};
+
+const showGroupsController = async () => {
+  try {
+    const groups = await showGroups();
+    showGroupsView(groups);
+  } catch (error) {
+    groupsErrorView(error);
+  }
+};
 
 module.exports = {
   createGroupController,
   updateGroupController,
   deleteGroupController,
+  showGroupsController,
 };
