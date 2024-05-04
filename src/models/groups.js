@@ -70,7 +70,7 @@ const showGroups = () => {
   return new Promise((resolve, reject) => {
     db.all(
       `
-    SELECT Groups.groupName, Contacts.name, Contacts.phoneNumber, Contacts.company, Contacts.email
+    SELECT Groups.*, Contacts.name, Contacts.phoneNumber, Contacts.company, Contacts.email
     FROM Groups
     JOIN GroupContact ON GroupContact.groupId = Groups.id
     JOIN Contacts ON GroupContact.contactId = Contacts.id 
