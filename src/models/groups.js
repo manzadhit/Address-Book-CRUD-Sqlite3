@@ -22,7 +22,7 @@ const createGroup = (groupName) => {
   });
 };
 
-const updateGroups = (id, groupName) => {
+const updateGroup = (id, groupName) => {
   return new Promise((resolve, reject) => {
     db.run(
       "UPDATE Groups SET groupName = ? WHERE id = ?",
@@ -46,7 +46,8 @@ const updateGroups = (id, groupName) => {
   });
 };
 
+
 module.exports = {
   createGroup,
-  updateGroups
+  updateGroup
 };

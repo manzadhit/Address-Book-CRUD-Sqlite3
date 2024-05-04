@@ -56,13 +56,19 @@ const updateContact = (id, name, phoneNumber, company, email) => {
 
 const deleteContact = (id) => {
   return new Promise((resolve, reject) => {
-    db.run("DELETE FROM Contacts WHERE id = ?", [id], (err) => {
+    db.get("SELECT * FROM Contacts WHERE id = ?", [id], (err, data) => {
       if (err) {
         reject(err);
       } else if (!data) {
         reject(new Error(`Contact with id ${id} not found`));
       } else {
-        resolve();
+        db.run("DELETE FROM Contacts WHERE id = ?", [id], (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        });
       }
     });
   });
